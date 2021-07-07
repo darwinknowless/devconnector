@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const auth = require("../../middlewares/auth");
 
+// Import user model
 const User = require("../../models/User");
 // @route       GET api/auth
 // @desc        Test route
