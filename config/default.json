@@ -1,4 +1,4 @@
 {
-    "MONGO_URI": "mongodb+srv://darwinknowless:29Desember@cluster0.bvggs.mongodb.net/devcon_development?retryWrites=true&w=majority"
-
+    "MONGO_URI": "mongodb+srv://darwinknowless:29Desember@cluster0.bvggs.mongodb.net/devcon_development?retryWrites=true&w=majority",
+    "JWT_SECRET": "29DesembeR!!"
 }
