@@ -103,8 +103,8 @@ router.post(
 			// If no profile found, create new
 			// Create
 			profile = new Profile(profileFields);
-
 			await profile.save();
+			// Result/return
 			res.json(profile);
 		} catch (err) {
 			console.error(err.message);
@@ -118,10 +118,12 @@ router.post(
 // @access      public
 router.get("/", async (req, res) => {
 	try {
+		// Find all user & populate
 		let profiles = await Profile.find().populate("user", [
 			"name",
 			"avatar",
 		]);
+		// Result/return
 		res.json(profiles);
 	} catch (err) {
 		console.error(err.message);
@@ -134,14 +136,17 @@ router.get("/", async (req, res) => {
 // @access      public
 router.get("/user/:user_id", async (req, res) => {
 	try {
+		// Find user by params ID & populate
 		let profile = await Profile.findOne({
 			user: req.params.user_id,
 		}).populate("user", ["name", "avatar"]);
-
+		// If not found
 		if (!profile) return res.status(400).json({ msg: "Profile not found" });
+		// Result/return
 		res.json(profile);
 	} catch (err) {
 		console.error(err.message);
+		// If not object ID
 		if (err.kind == "ObjectId") {
 			return res.status(400).json({ msg: "Profile not found" });
 		}
